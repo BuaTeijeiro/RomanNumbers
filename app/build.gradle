@@ -21,6 +21,8 @@ dependencies {
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.6.1'
+
     // This dependency is used by the application.
     implementation libs.guava
 }
