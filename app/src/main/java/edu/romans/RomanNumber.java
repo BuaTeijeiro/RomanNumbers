@@ -17,23 +17,23 @@ public class RomanNumber {
         return this.getRoman().matches(RomanNumber.REGEX);
     }
 
-    private static int getNumericalValue(String letter){
-        return LetterValues.valueOf(letter).getValue();
+    private static int getNumericalValue(char letter){
+        return LetterValues.valueOf(String.valueOf(letter)).getValue();
     }
 
     private int computeDecimal(){
         String revereseString = new StringBuilder(this.getRoman()).reverse().toString();
-        String previousChar = "I";
+        char[] chars = revereseString.toCharArray();
+        char previousChar = 'I';
         int total = 0;
-        for (int i =0 ; i< revereseString.length(); i++) {
-            String character =  String.valueOf(revereseString.charAt(i));
-            int letterValue = RomanNumber.getNumericalValue(character);
+        for (char letter : chars){
+            int letterValue = RomanNumber.getNumericalValue(letter);
             if (letterValue >= RomanNumber.getNumericalValue(previousChar)){
                 total += letterValue;
             } else{
                 total -= letterValue;
             }
-            previousChar = character;
+            previousChar = letter;
         }
         return total;
     }
