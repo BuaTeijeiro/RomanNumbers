@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class RomanNumber {
     private String roman;
     private static final String VALID_ROMAN_EXPRESSION = "M{0,3}(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})";
-    private static final String SUBSTRACTION_GROUPS = "(CM|CD|XC|XL|IX|IV)";
+    private static final String SUBSTRACTION_GROUPS = "(C[MD]|X[CL]|I[XV])";
 
     public String getRoman() {
         return roman;
