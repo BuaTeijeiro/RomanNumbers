@@ -41,7 +41,7 @@ public class RomanNumber {
         return RomanNumber.getNumericalValue(group.charAt(1)) - RomanNumber.getNumericalValue(group.charAt(0));
     }
 
-    private static int sumValueLetters(String roman){
+    static int sumValueLetters(String roman){
         int total = 0;
         for (char letter : roman.toCharArray()){
             total += RomanNumber.getNumericalValue(letter);
