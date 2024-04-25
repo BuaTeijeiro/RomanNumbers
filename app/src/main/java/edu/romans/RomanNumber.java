@@ -3,7 +3,7 @@ package edu.romans;
 
 public class RomanNumber {
     private String roman;
-    private static final String REGEX = "M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})";
+    private static final String REGEX = "M{0,3}(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})";
 
     public String getRoman() {
         return roman;
@@ -15,6 +15,20 @@ public class RomanNumber {
 
     public boolean checkValidity() {
         return this.getRoman().matches(RomanNumber.REGEX);
+    }
+
+    public int toDecimal(){
+        if(this.checkValidity()){
+            return this.computeDecimal();
+        } else {
+            return 0;
+        }
+    
+    }
+
+    @Override
+    public String toString(){
+        return this.getRoman();
     }
 
     private static int getNumericalValue(char letter){
@@ -37,16 +51,5 @@ public class RomanNumber {
         }
         return total;
     }
-
-    public int toDecimal(){
-        if(this.checkValidity()){
-            return this.computeDecimal();
-        } else {
-            return 0;
-        }
-    
-    }
-
-    
 
 }
