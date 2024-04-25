@@ -41,6 +41,14 @@ public class RomanNumber {
         return RomanNumber.getNumericalValue(group.charAt(1)) - RomanNumber.getNumericalValue(group.charAt(0));
     }
 
+    private static int sumValueLetters(String roman){
+        int total = 0;
+        for (char letter : roman.toCharArray()){
+            total += RomanNumber.getNumericalValue(letter);
+        }
+        return total;
+    }
+
     private int computeDecimal(){
         int total = 0;
         String romanNumeral = this.getRoman();
@@ -56,10 +64,7 @@ public class RomanNumber {
                 romanNumeral = sb.toString();
             }
         }
-        for (char letter : romanNumeral.toCharArray()){
-            total += RomanNumber.getNumericalValue(letter);
-        }
-        return total;
+        return total + RomanNumber.sumValueLetters(romanNumeral);
     }
 
     
