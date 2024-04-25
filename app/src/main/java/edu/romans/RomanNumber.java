@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class RomanNumber {
     private String roman;
-    private static final String REGEX = "M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})";
+    private static final String REGEX = "M{0,3}(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})";
     private static final String[] SUBSTRACTIONGROUPS = {"CM","CD","XC","XL","IX","IV"};
 
     public String getRoman() {
