@@ -33,11 +33,11 @@ public class RomanNumber {
         return this.getRoman();
     }
 
-    private static int getNumericalValue(char letter){
+    static int getNumericalValue(char letter){
         return LetterValues.valueOf(String.valueOf(letter)).getValue();
     }
 
-    private static int getValueSubstractionGroup(String group){
+    static int getValueSubstractionGroup(String group){
         return RomanNumber.getNumericalValue(group.charAt(1)) - RomanNumber.getNumericalValue(group.charAt(0));
     }
 
