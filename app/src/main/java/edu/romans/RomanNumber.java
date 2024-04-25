@@ -5,8 +5,8 @@ import java.util.regex.Pattern;
 
 public class RomanNumber {
     private String roman;
-    private static final String REGEX = "M{0,3}(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})";
-    private static final String SUBSTRACTIONGROUPS = "(CM|CD|XC|XL|IX|IV)";
+    private static final String VALID_ROMAN_EXPRESSION = "M{0,3}(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})";
+    private static final String SUBSTRACTION_GROUPS = "(CM|CD|XC|XL|IX|IV)";
 
     public String getRoman() {
         return roman;
@@ -17,7 +17,7 @@ public class RomanNumber {
     }
 
     public boolean checkValidity() {
-        return this.getRoman().matches(RomanNumber.REGEX);
+        return this.getRoman().matches(RomanNumber.VALID_ROMAN_EXPRESSION);
     }
 
     public int toDecimal(){
@@ -54,7 +54,7 @@ public class RomanNumber {
         String romanNumeral = this.getRoman();
         String replacement = "";
         StringBuffer sb = new StringBuffer();
-        Pattern p = Pattern.compile(RomanNumber.SUBSTRACTIONGROUPS);
+        Pattern p = Pattern.compile(RomanNumber.SUBSTRACTION_GROUPS);
         Matcher m = p.matcher(romanNumeral);
 
         while (m.find()){
