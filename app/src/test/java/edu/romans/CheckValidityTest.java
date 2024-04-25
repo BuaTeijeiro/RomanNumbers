@@ -32,7 +32,7 @@ public class CheckValidityTest {
 
     }
     @Test
-    public void checkSeveralLetters(){
+    public void checkSeveralLettersValid(){
         RomanNumber singleLetter = new RomanNumber("XVI");
         assertTrue(singleLetter.checkValidity());
         singleLetter = new RomanNumber("CMX");
@@ -47,13 +47,34 @@ public class CheckValidityTest {
         assertTrue(singleLetter.checkValidity());
         singleLetter = new RomanNumber("ML");
         assertTrue(singleLetter.checkValidity());
-        singleLetter = new RomanNumber("MMMK");
+        
+    }
+
+    @Test
+    public void checkSeveralLettersInValid(){
+        RomanNumber singleLetter = new RomanNumber("MMMK");
         assertFalse(singleLetter.checkValidity());
-        singleLetter = new RomanNumber("CMC");
+        singleLetter = new RomanNumber("MMXXVIIL");
         assertFalse(singleLetter.checkValidity());
-        singleLetter = new RomanNumber("MMMXXXX");
+
+        singleLetter = new RomanNumber("MMMM");
+        assertFalse(singleLetter.checkValidity());
+        singleLetter = new RomanNumber("CCCC");
+        assertFalse(singleLetter.checkValidity());
+        singleLetter = new RomanNumber("XXXX");
+        assertFalse(singleLetter.checkValidity());
+        singleLetter = new RomanNumber("IIII");
+        assertFalse(singleLetter.checkValidity());
+
+        singleLetter = new RomanNumber("DD");
         assertFalse(singleLetter.checkValidity());
         singleLetter = new RomanNumber("LL");
+        assertFalse(singleLetter.checkValidity());
+        singleLetter = new RomanNumber("VV");
+        assertFalse(singleLetter.checkValidity());
+
+
+        singleLetter = new RomanNumber("CMC");
         assertFalse(singleLetter.checkValidity());
         singleLetter = new RomanNumber("CDD");
         assertFalse(singleLetter.checkValidity());
@@ -63,9 +84,6 @@ public class CheckValidityTest {
         assertFalse(singleLetter.checkValidity());
         singleLetter = new RomanNumber("IM");
         assertFalse(singleLetter.checkValidity());
-
     }
-
-
 
 }
