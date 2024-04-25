@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class RomanNumber {
     private String roman;
     private static final String REGEX = "M{0,3}(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})";
-    private static final String[] SUBSTRACTIONGROUPS = {"CM","CD","XC","XL","IX","IV"};
+    private static final String SUBSTRACTIONGROUPS = "(CM|CD|XC|XL|IX|IV)";
 
     public String getRoman() {
         return roman;
@@ -53,17 +53,17 @@ public class RomanNumber {
         int total = 0;
         String romanNumeral = this.getRoman();
         String replacement = "";
-        for (String group : RomanNumber.SUBSTRACTIONGROUPS){
-            StringBuffer sb = new StringBuffer();
-            Pattern p = Pattern.compile(group);
-            Matcher m = p.matcher(romanNumeral);
-            if (m.find()){
+        StringBuffer sb = new StringBuffer();
+        Pattern p = Pattern.compile(RomanNumber.SUBSTRACTIONGROUPS);
+        Matcher m = p.matcher(romanNumeral);
+
+        while (m.find()){
                 total += RomanNumber.getValueSubstractionGroup(m.group());
                 m.appendReplacement(sb, replacement);
-                m.appendTail(sb);
-                romanNumeral = sb.toString();
             }
-        }
+        
+        m.appendTail(sb);
+        romanNumeral = sb.toString();
         return total + RomanNumber.sumValueLetters(romanNumeral);
     }
 
