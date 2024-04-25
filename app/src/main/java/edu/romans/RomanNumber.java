@@ -22,7 +22,7 @@ public class RomanNumber {
 
     public int toDecimal(){
         if(this.checkValidity()){
-            return this.computeDecimalRegex();
+            return this.computeDecimal();
         } else {
             return 0;
         }
@@ -42,23 +42,6 @@ public class RomanNumber {
     }
 
     private int computeDecimal(){
-        String revereseString = new StringBuilder(this.getRoman()).reverse().toString();
-        char[] chars = revereseString.toCharArray();
-        char previousChar = 'I';
-        int total = 0;
-        for (char letter : chars){
-            int letterValue = RomanNumber.getNumericalValue(letter);
-            if (letterValue >= RomanNumber.getNumericalValue(previousChar)){
-                total += letterValue;
-            } else{
-                total -= letterValue;
-            }
-            previousChar = letter;
-        }
-        return total;
-    }
-
-    private int computeDecimalRegex(){
         int total = 0;
         String romanNumeral = this.getRoman();
         String replacement = "";
