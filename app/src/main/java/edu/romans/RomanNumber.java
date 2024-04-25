@@ -20,6 +20,19 @@ public class RomanNumber {
         return this.getRoman().matches(RomanNumber.REGEX);
     }
 
+    public int toDecimal(){
+        if(this.checkValidity()){
+            return this.computeDecimalRegex();
+        } else {
+            return 0;
+        }
+    }
+
+    @Override
+    public String toString(){
+        return this.getRoman();
+    }
+
     private static int getNumericalValue(char letter){
         return LetterValues.valueOf(String.valueOf(letter)).getValue();
     }
@@ -66,14 +79,7 @@ public class RomanNumber {
         return total;
     }
 
-    public int toDecimal(){
-        if(this.checkValidity()){
-            return this.computeDecimalRegex();
-        } else {
-            return 0;
-        }
     
-    }
 
     
 
